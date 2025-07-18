@@ -141,7 +141,7 @@ Kubernetes provides robust services to manage and network your containerized app
 
 Securing Kubernetes deployments requires a multi-layered approach, encompassing various aspects of the cluster, from the underlying infrastructure to the applications running within Pods. Here's a list of essential security controls:
 
-### **1\. Cluster and Control Plane Security**
+### **Cluster and Control Plane Security**
 
 * **API Server Security:**  
   * **Authentication & Authorization:** Integrate with a robust identity provider (IdP) using OpenID Connect (OIDC) for user authentication. Use Role-Based Access Control (RBAC) to enforce the principle of least privilege for all users and service accounts. Regularly audit RBAC policies.  
@@ -157,7 +157,7 @@ Securing Kubernetes deployments requires a multi-layered approach, encompassing 
 * **Regular Updates & Patching:** Keep Kubernetes cluster components (control plane and nodes) and all underlying operating systems up to date to patch known vulnerabilities.  
 * **CIS Benchmarks Compliance:** Regularly audit your cluster configuration against the CIS Kubernetes Benchmark for best practices and security hardening.
 
-### **2\. Workload and Application Security**
+### **Workload and Application Security**
 
 * **Image Security:**  
   * **Vulnerability Scanning:** Implement continuous vulnerability scanning of container images throughout the CI/CD pipeline and at runtime.  
@@ -182,7 +182,7 @@ Securing Kubernetes deployments requires a multi-layered approach, encompassing 
   * **Disable Auto-Mounting:** Disable automatic mounting of default service account tokens for Pods that don't require API access.  
   * **Short-Lived Tokens:** Leverage TokenRequest API for short-lived, revocable service account tokens.
 
-### **3\. Operational Security**
+### **Operational Security**
 
 * **Audit Logging:** Enable comprehensive audit logging for the Kubernetes API server and review logs regularly. Integrate logs with a centralized SIEM (Security Information and Event Management) system for analysis and alerting.  
 * **Monitoring and Alerting:** Implement robust monitoring and alerting for cluster health, resource utilization, and suspicious activities (e.g., unauthorized API calls, unusual network traffic patterns, container runtime deviations). Tools like Falco or Sysdig can help with runtime threat detection.  
