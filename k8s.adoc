@@ -198,33 +198,43 @@ By implementing these services and security controls, organizations can signific
 
 ## **Secrets Management within K8** 
 Kubernetes manages secrets through Secret objects, which store sensitive information like passwords and API keys. These secrets are stored in Kubernetes' etcd database, which underpins the API server. While etcd can be configured to encrypt secrets at rest, this is not the default behavior. Kubernetes also uses Role-Based Access Control (RBAC) to manage who can access these secrets. 
+
 Here's a breakdown of how Kubernetes secrets are managed:
-1. Secret Objects:
-Secrets are Kubernetes resources that store sensitive data. 
-They are typically created using kubectl create secret or defined in YAML files. 
-Examples include passwords, API tokens, and SSH keys. 
-Secrets can be used in pods as environment variables or mounted as volumes. 
-2. Storage and Access:
-By default, Kubernetes stores secrets in etcd in a potentially unencrypted format.
-Therefore, it is crucial to enable encryption at rest for etcd to protect secrets from unauthorized access.
-Secrets are accessed by pods through their configurations, referencing the secret name and key.
-Kubernetes uses RBAC to control which pods and users can access specific secrets. 
-3. Security Best Practices:
-Encryption at Rest: Enable etcd encryption to protect secrets stored in the database. 
-RBAC: Implement strict RBAC policies to control access to secrets. 
-Least Privilege: Grant only the necessary permissions to pods and users. 
-Rotation: Regularly rotate secrets to minimize the impact of potential breaches. 
-External Secrets: Consider using external secret management solutions like Vault or HashiCorp Vault, especially for complex environments. 
-Secret Scanning: Utilize tools to scan your code and configurations for hardcoded secrets. 
-4. Managing Secrets:
-kubectl:
-Use kubectl commands to create, update, and delete secrets. 
-YAML:
-Define secrets declaratively in YAML files for consistency and version control. 
-CI/CD:
-Integrate secret management into your CI/CD pipelines to automate secret injection. 
-External Secrets Operator (ESO):
-Use the ESO to manage secrets from external providers, pulling and synchronizing them into Kubernetes as native secrets. 
-External Secret Management:
-Consider using solutions like HashiCorp Vault, AWS Secrets Manager, or Azure Key Vault for more advanced secret management. 
+
+. Secret Objects: Secrets are Kubernetes resources that store sensitive data. They are typically created using kubectl create secret or defined in YAML files. Examples include passwords, API tokens, and SSH keys. Secrets can be used in pods as environment variables or mounted as volumes. 
+. Storage and Access: By default, Kubernetes stores secrets in etcd in a potentially unencrypted format. Therefore, it is crucial to enable encryption at rest for etcd to protect secrets from unauthorized access. Secrets are accessed by pods through their configurations, referencing the secret name and key. Kubernetes uses RBAC to control which pods and users can access specific secrets. 
+. Security Best Practices: Encryption at Rest: Enable etcd encryption to protect secrets stored in the database. 
+.. RBAC: Implement strict RBAC policies to control access to secrets. 
+.. Least Privilege: Grant only the necessary permissions to pods and users. 
+.. Rotation: Regularly rotate secrets to minimize the impact of potential breaches. 
+.. External Secrets: Consider using external secret management solutions like Vault or HashiCorp Vault, especially for complex environments. 
+.. Secret Scanning: Utilize tools to scan your code and configurations for hardcoded secrets. 
+. Managing Secrets:
+.. kubectl: Use kubectl commands to create, update, and delete secrets. 
+.. YAML: Define secrets declaratively in YAML files for consistency and version control. 
+.. CI/CD: Integrate secret management into your CI/CD pipelines to automate secret injection. 
+.. External Secrets Operator (ESO): Use the ESO to manage secrets from external providers, pulling and synchronizing them into Kubernetes as native secrets. 
+.. External Secret Management: Consider using solutions like HashiCorp Vault, AWS Secrets Manager, or Azure Key Vault for more advanced secret management. 
+
 By following these practices, you can effectively manage secrets in Kubernetes and maintain a secure environment for your applications. 
+<<<
+## **Command Reference**
+The following commands are essential for managing Kubernetes clusters and resources:
+
+* **kubectl get nodes:** Lists all nodes in the cluster, showing their status and roles.
+* **kubectl get pods:** Lists all Pods in the current namespace, showing their status and resource usage.
+* **kubectl get pods -n <namespace>:** Lists all Pods in the specified namespace, showing their status and resource usage.
+* **kubectl get deployments:** Lists all Deployments in the current namespace, showing their status and number of replicas.
+* **kubectl describe pod <pod-name>:** Provides detailed information about a specific Pod, including its events, resource usage, and configuration.
+* **kubectl logs <pod-name>:** Retrieves the logs of a specific Pod, useful for debugging and monitoring application behavior.
+* **kubectl exec -it <pod-name> -- /bin/bash:** Opens an interactive shell session inside a running Pod, allowing you to troubleshoot and manage applications directly.
+* **kubectl apply -f <file.yaml>:** Applies the configuration defined in a YAML file to create or update Kubernetes resources.
+* **kubectl delete pod <pod-name>:** Deletes a specific Pod from the cluster.  
+* **kubectl scale deployment <deployment-name> --replicas=<number>:** Scales a Deployment to the specified number of replicas, allowing you to adjust application capacity dynamically.
+* **kubectl get services:** Lists all Services in the current namespace, showing their types and endpoints. 
+* **kubectl port-forward <pod-name> <local-port>:<remote-port>:** Forwards a local port to a port on a Pod, enabling access to applications running inside the cluster.
+* **kubectl get secrets:** Lists all Secrets in the current namespace, showing their names and types.
+* **kubectl create secret generic <secret-name> --from-literal=<key>=<value>:** Creates a new Secret with the specified key-value pair, allowing you to store sensitive information securely.
+* **kubectl get configmaps:** Lists all ConfigMaps in the current namespace, showing their names and data. 
+* **kubectl create configmap <configmap-name> --from-literal=<key>=<value>:** Creates a new ConfigMap with the specified key-value pair, allowing you to store non-sensitive configuration data.
+* **kubectl get namespaces:** Lists all namespaces in the cluster, showing their names and statuses
