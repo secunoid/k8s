@@ -238,3 +238,9 @@ The following commands are essential for managing Kubernetes clusters and resour
 * **kubectl get configmaps:** Lists all ConfigMaps in the current namespace, showing their names and data. 
 * **kubectl create configmap <configmap-name> --from-literal=<key>=<value>:** Creates a new ConfigMap with the specified key-value pair, allowing you to store non-sensitive configuration data.
 * **kubectl get namespaces:** Lists all namespaces in the cluster, showing their names and statuses
+* **kubectl delete pods <pod-name> -n <namespace>:** Deletes a specific Pod in the specified namespace.
+* **kubectl get events:** Lists all events in the current namespace, providing insights into resource
+* **watch -n 0.1 kubectl describe svc -n demo:** status and changes in the cluster.
+* **kubectl top pods:** Displays resource usage (CPU and memory) for all Pods in the current namespace, helping you monitor application performance.
+* **kubectl top nodes:** Displays resource usage (CPU and memory) for all nodes in    
+kubectl run curl-pod -n demo --image=busybox:1.28 --rm -it --restart=Never -- /bin/sh 
